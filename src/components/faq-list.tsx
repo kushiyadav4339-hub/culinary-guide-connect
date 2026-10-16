@@ -1,0 +1,5 @@
+import { useState } from 'react';
+import { Plus, Minus, Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { faqItems } from '@/lib/elite-data';
+export function FaqList({compact=false}:{compact?:boolean}){const[query,setQuery]=useState('');const[open,setOpen]=useState<string|null>(null);const items=(compact?faqItems.slice(0,4):faqItems).filter(([q,a])=>`${q} ${a}`.toLowerCase().includes(query.toLowerCase()));return <div className="faq-list">{!compact&&<label className="search-field"><Search size={17}/><input aria-label="Search questions" placeholder="Search questions" value={query} onChange={e=>setQuery(e.target.value)}/></label>}{items.map(([q,a])=><article className="faq-item" key={q}><Button variant="ghost" className="faq-question" aria-expanded={open===q} onClick={()=>setOpen(open===q?null:q)}>{q}{open===q?<Minus/>:<Plus/>}</Button>{open===q&&<p>{a}</p>}</article>)}{items.length===0&&<p className="page-intro">No matching questions. Try another search or contact us.</p>}</div>}
