@@ -1,6 +1,9 @@
 export const programs = [
- {name:'Entry',balance:5000,fee:50}, {name:'Starter',balance:10000,fee:100},
- {name:'Popular',balance:25000,fee:250}, {name:'Pro',balance:50000,fee:500}, {name:'Advanced',balance:100000,fee:1000},
+ {name:'Entry',balance:5000,fee:50,tagline:'Your first defined account.',features:['FX, metals & crypto access','2% daily / 2% overall drawdown','Up to 90% profit share','USDT payout support']},
+ {name:'Starter',balance:10000,fee:100,tagline:'Room to build a rhythm.',features:['FX, metals & crypto access','2% daily / 2% overall drawdown','Up to 90% profit share','USDT payout support']},
+ {name:'Popular',balance:25000,fee:250,tagline:'The most chosen capacity.',badge:'MOST CHOSEN',features:['FX, metals & crypto access','2% daily / 2% overall drawdown','Up to 90% profit share','USDT payout support']},
+ {name:'Pro',balance:50000,fee:500,tagline:'Serious capital, clear limits.',features:['FX, metals & crypto access','2% daily / 2% overall drawdown','Up to 90% profit share','USDT payout support']},
+ {name:'Advanced',balance:100000,fee:1000,tagline:'The full Elite capacity.',features:['FX, metals & crypto access','2% daily / 2% overall drawdown','Up to 90% profit share','USDT payout support']},
 ];
 export const usd = (amount:number) => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(amount);
 export const faqItems: [string, string][] = [
