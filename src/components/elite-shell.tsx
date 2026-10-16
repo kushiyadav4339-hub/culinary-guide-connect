@@ -1,0 +1,10 @@
+import { Link } from '@tanstack/react-router';
+import { useState, type ReactNode } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import mark from '@/assets/elite-mark.asset.json';
+export function EliteShell({ children }: { children: ReactNode }) {
+ const [open,setOpen] = useState(false);
+ return <><header className="site-header"><Link to="/" className="brand" aria-label="Elite Fund home"><img src={mark.url} alt=""/><div><div className="brand-name">ELITE <span>FUND</span></div><div className="brand-caption">PRECISION IS A POSITION</div></div></Link><nav aria-label="Main navigation" className={`desktop-nav ${open ? 'mobile-open' : ''}`}><Link to="/" onClick={()=>setOpen(false)}>Overview</Link><Link to="/programs" onClick={()=>setOpen(false)}>Programs</Link><Link to="/platform" onClick={()=>setOpen(false)}>The Platform</Link><Link to="/risk" onClick={()=>setOpen(false)}>Rules & Risk</Link></nav><div className="header-actions"><a className="header-login" href="https://www.elitefund.sbs" target="_blank" rel="noopener noreferrer">Log in</a><Button asChild variant="outline" className="header-cta"><Link to="/programs">Explore Programs <ArrowUpRight/></Link></Button><Button variant="ghost" size="icon" className="menu-toggle" aria-label={open?'Close menu':'Open menu'} onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</Button></div></header>{children}<footer className="site-footer"><p>© {new Date().getFullYear()} ELITE FUND. Trading involves risk. Market data shown is an illustrative snapshot, not a live feed. Review all program terms before participating.</p><div className="footer-links"><Link to="/risk">Risk disclosure</Link><span>BUILT FOR THE DISCIPLINED.</span></div></footer></>;
+}
+export function pageHead(title: string, description: string) {return {meta:[{title:`${title} | Elite Fund`},{name:'description',content:description},{property:'og:title',content:`${title} | Elite Fund`},{property:'og:description',content:description},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]};}
