@@ -122,7 +122,7 @@ a { text-decoration:none; } button, a { -webkit-tap-highlight-color: transparent
 .hero-buttons a:hover { transform:translateY(-3px); }
 .hero-buttons a svg, .risk-metrics>a>svg:last-child { transition:translate .3s var(--motion-ease); }
 .hero-buttons a:hover svg, .risk-metrics>a:hover>svg:last-child { translate:3px -2px; }
-.account-option:hover { transform:translateY(-3px);border-color:var(--accent); }
+.account-option:hover { transform:translateY(-3px);border-color:var(--accent);background:var(--secondary);color:var(--foreground); }
 .faq-item p, .submission-success { animation:reveal .4s var(--motion-ease) both; }
 .desktop-nav.mobile-open { animation:reveal .35s var(--motion-ease) both; }
 @keyframes terminal-drift { 0%,100% { transform:rotateY(-13deg) rotateX(5deg) rotateZ(-2deg) translateY(0); } 50% { transform:rotateY(-10deg) rotateX(3deg) rotateZ(-1deg) translateY(-9px); } }
