@@ -15,3 +15,4 @@
 - Present uploaded terminal media as snapshots and link to the official site for account access; never imply live data or unverified program terms.
 - Reuse ProgramComparison and FaqList across the homepage and dedicated pages so account details and answers stay consistent.
 - Store inquiries through the validated contact RPC; keep trading, purchases, and account access on the official platform to avoid implying an operational trading service.
+- Mount useEditorialMotion in EliteShell for one-shot scroll entrances; keep motion styling in CSS and respect reduced-motion preferences so content remains accessible.
