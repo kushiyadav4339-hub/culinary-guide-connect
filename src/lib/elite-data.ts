@@ -3,7 +3,7 @@ export const programs = [
  {name:'Popular',balance:25000,fee:250}, {name:'Pro',balance:50000,fee:500}, {name:'Advanced',balance:100000,fee:1000},
 ];
 export const usd = (amount:number) => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(amount);
-export const faqItems = [
+export const faqItems: [string, string][] = [
  ['What is Elite Fund?','Elite Fund presents trading account programs alongside its proprietary workspace for Forex, metals and digital assets. Review the account agreement to confirm the exact capital and execution model.'],
  ['Which account sizes are available?','Published programs range from $5,000 to $100,000, with one-time fees from $50 to $1,000. The program page compares all five tiers. Confirm current pricing before purchase.'],
  ['What are the drawdown limits?','The official site publishes a 2% maximum daily drawdown and a 2% maximum overall drawdown. Confirm the reference balance, reset time and breach calculations in your account agreement.'],
