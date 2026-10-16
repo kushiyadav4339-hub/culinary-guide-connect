@@ -13,3 +13,5 @@
 - Use the shared EliteShell for content routes and pageHead for unique leaf metadata, keeping navigation and disclosures consistent.
 - Keep visual styling in the global semantic-token design system so brand changes apply consistently.
 - Present uploaded terminal media as snapshots and link to the official site for account access; never imply live data or unverified program terms.
+- Reuse ProgramComparison and FaqList across the homepage and dedicated pages so account details and answers stay consistent.
+- Store inquiries through the validated contact RPC; keep trading, purchases, and account access on the official platform to avoid implying an operational trading service.

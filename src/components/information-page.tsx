@@ -1,0 +1,5 @@
+import { Link } from '@tanstack/react-router';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { EliteShell } from '@/components/elite-shell';
+import { Button } from '@/components/ui/button';
+export function InformationPage({eyebrow,title,intro,sections,official}:{eyebrow:string;title:string;intro:string;sections:{title:string;text:string}[];official?:string}){return <EliteShell><main className="content-page"><div className="eyebrow">ELITE FUND / {eyebrow}</div><h1 className="page-title">{title}</h1><p className="page-intro">{intro}</p><div className="risk-list">{sections.map((s,i)=><article key={s.title}><span>{String(i+1).padStart(2,'0')}</span><div><h2>{s.title}</h2><p>{s.text}</p></div></article>)}</div><div className="hero-buttons">{official&&<Button asChild><a href={official} target="_blank" rel="noopener noreferrer">Read the official document <ArrowUpRight/></a></Button>}<Button variant="outline" asChild><Link to="/contact">Ask a question <ArrowRight/></Link></Button></div></main></EliteShell>}
