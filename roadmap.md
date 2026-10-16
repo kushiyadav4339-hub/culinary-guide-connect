@@ -6,3 +6,4 @@
 - [ ] Expand the landing page with all verified program details, process, platform, rules, payouts, FAQs, and contact.
 - [ ] Connect Lovable Cloud for working submissions and account features.
 - [ ] Verify new full-stack flows end to end.
+- [ ] Deliver at least 10 substantive pages based on the uploaded brief, with expanded homepage and complete navigation.
