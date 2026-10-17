@@ -1,5 +1,5 @@
 # Elite Fund
-- [ ] Blend all twelve pages with shared entrances, animated textures and interactive depth; verify navigation and reduced motion.
+- [x] Blend all twelve pages with shared entrances, animated textures and interactive depth; verify navigation and reduced motion.
 - [x] Build the branded opening experience and terminal presentation.
 - [x] Add programs, platform, and risk information with working navigation.
 - [x] Verify desktop, mobile, and primary navigation.
