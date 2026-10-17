@@ -1,11 +1,12 @@
-import { Link } from '@tanstack/react-router';
+import { Link, useRouterState } from '@tanstack/react-router';
 import { useState, type ReactNode } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import mark from '@/assets/elite-mark.asset.json';
 import { useEditorialMotion } from '@/hooks/use-editorial-motion';
 export function EliteShell({ children }: { children: ReactNode }) {
- useEditorialMotion();
+ const pathname = useRouterState({ select: state => state.location.pathname });
+ useEditorialMotion(pathname);
  const [open,setOpen] = useState(false);
  return <><header className="site-header"><Link to="/" className="brand" aria-label="Elite Fund home"><img src={mark.url} alt=""/><div><div className="brand-name">ELITE <span>FUND</span></div><div className="brand-caption">PRECISION IS A POSITION</div></div></Link><nav aria-label="Main navigation" className={`desktop-nav ${open ? 'mobile-open' : ''}`}><Link to="/" onClick={()=>setOpen(false)}>Overview</Link><Link to="/programs" onClick={()=>setOpen(false)}>Programs</Link><Link to="/platform" onClick={()=>setOpen(false)}>The Platform</Link><Link to="/rules" onClick={()=>setOpen(false)}>Rules & Risk</Link><Link to="/how-it-works" onClick={()=>setOpen(false)}>How it works</Link><Link to="/faq" onClick={()=>setOpen(false)}>FAQ</Link></nav><div className="header-actions"><a className="header-login" href="https://www.elitefund.sbs" target="_blank" rel="noopener noreferrer">Log in</a><Button asChild variant="outline" className="header-cta"><Link to="/programs">Explore Programs <ArrowUpRight/></Link></Button><Button variant="ghost" size="icon" className="menu-toggle" aria-label={open?'Close menu':'Open menu'} onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</Button></div></header>{children}<section className="footer-directory"><div><div className="brand-name">ELITE <span>FUND</span></div><p>PRECISION IS A POSITION.</p></div><div><h3>Explore</h3><Link to="/programs">Programs</Link><Link to="/platform">The Platform</Link><Link to="/how-it-works">How it works</Link></div><div><h3>Understand</h3><Link to="/rules">Trading rules</Link><Link to="/payouts">Payouts</Link><Link to="/risk">Risk disclosure</Link></div><div><h3>Connect</h3><Link to="/about">About Elite Fund</Link><Link to="/faq">Knowledge base</Link><Link to="/contact">Contact</Link></div><div><h3>Legal</h3><Link to="/terms">Terms of service</Link><Link to="/privacy">Privacy policy</Link></div></section><footer className="site-footer"><p>© {new Date().getFullYear()} ELITE FUND. Trading involves risk. Market data shown is an illustrative snapshot, not a live feed. Review all program terms before participating.</p><div className="footer-links"><Link to="/risk">Risk disclosure</Link><span>BUILT FOR THE DISCIPLINED.</span></div></footer></>;
 }

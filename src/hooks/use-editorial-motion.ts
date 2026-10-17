@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
 
-export function useEditorialMotion() {
+export function useEditorialMotion(pathname: string) {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (preference.matches) return;
+    const main = document.querySelector('main');
+    main?.classList.add('page-arriving');
+    const entranceTimer = window.setTimeout(() => main?.classList.remove('page-arriving'), 1100);
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
@@ -10,13 +14,39 @@ export function useEditorialMotion() {
         observer.unobserve(entry.target);
       });
     }, { threshold: 0.08 });
-    const elements = document.querySelectorAll('.section-heading, .principle, .process-track article, .risk-metrics > a, .comparison, .faq-item, .closing-section > *, .content-page > *, .footer-directory > div');
+    const elements = document.querySelectorAll('.section-heading, .principle, .process-track article, .risk-metrics > a, .tier-card, .profit-lens, .bento-card, .faq-item, .closing-section > *, .content-page > .eyebrow, .page-title, .page-intro, .risk-list article, .platform-preview, .contact-layout > *, .footer-directory > div');
     elements.forEach((element) => {
-      if (element.getBoundingClientRect().top < window.innerHeight) return;
       element.classList.add('motion-ready');
       observer.observe(element);
     });
     const hero = document.querySelector<HTMLElement>('.hero');
+    const cards = document.querySelectorAll<HTMLElement>('.tier-card, .bento-card');
+    const moveCard = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse' || !(event.currentTarget instanceof HTMLElement)) return;
+      const card = event.currentTarget;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--card-rx', `${-(event.clientY - rect.top - rect.height / 2) / rect.height * 5}deg`);
+      card.style.setProperty('--card-ry', `${(event.clientX - rect.left - rect.width / 2) / rect.width * 5}deg`);
+    };
+    const resetCard = (event: PointerEvent) => {
+      if (!(event.currentTarget instanceof HTMLElement)) return;
+      event.currentTarget.style.removeProperty('--card-rx');
+      event.currentTarget.style.removeProperty('--card-ry');
+    };
+    cards.forEach(card => {
+      card.addEventListener('pointermove', moveCard);
+      card.addEventListener('pointerleave', resetCard);
+    });
+    const stopMotion = () => {
+      if (!preference.matches) return;
+      elements.forEach(element => element.classList.remove('motion-ready', 'motion-visible'));
+      cards.forEach(card => {
+        card.style.removeProperty('--card-rx');
+        card.style.removeProperty('--card-ry');
+      });
+      resetTerminal();
+      observer.disconnect();
+    };
     let frame = 0;
     const updateProgress = () => {
       cancelAnimationFrame(frame);
@@ -39,7 +69,17 @@ export function useEditorialMotion() {
     hero?.addEventListener('pointerleave', resetTerminal);
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
+    preference.addEventListener('change', stopMotion);
     return () => {
+      clearTimeout(entranceTimer);
+      main?.classList.remove('page-arriving');
+      preference.removeEventListener('change', stopMotion);
+      cards.forEach(card => {
+        card.removeEventListener('pointermove', moveCard);
+        card.removeEventListener('pointerleave', resetCard);
+        card.style.removeProperty('--card-rx');
+        card.style.removeProperty('--card-ry');
+      });
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', updateProgress);
       hero?.removeEventListener('pointermove', moveTerminal);
@@ -48,5 +88,5 @@ export function useEditorialMotion() {
       observer.disconnect();
       elements.forEach((element) => element.classList.remove('motion-ready', 'motion-visible'));
     };
-  }, []);
+  }, [pathname]);
 }
