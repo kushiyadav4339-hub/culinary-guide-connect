@@ -15,5 +15,5 @@
 - Present uploaded terminal media as snapshots and link to the official site for account access; never imply live data or unverified program terms.
 - Reuse ProgramComparison and FaqList across the homepage and dedicated pages so account details and answers stay consistent.
 - Store inquiries through the validated contact RPC; keep trading, purchases, and account access on the official platform to avoid implying an operational trading service.
-- Mount useEditorialMotion in EliteShell for one-shot entrances, pointer-based terminal movement and scroll progress; keep animation styling in CSS and respect reduced motion to preserve accessibility.
+- Mount route-aware useEditorialMotion in EliteShell for one-shot entrances, pointer-based terminal/card movement and scroll progress; reset effects on navigation and keep reduced-motion-safe styling in CSS for consistent cross-page behavior.
 - Render the illustrative market snapshot through MarketSnapshot with duplicated, accessibility-hidden loop content so motion never implies updating financial data.
