@@ -285,7 +285,8 @@ main.page-arriving { animation:page-blend 1s var(--motion-ease) both; }
 .risk-list h2 { font-family:var(--font-display);line-height:1.4; }
 .platform-preview { position:relative;box-shadow:var(--terminal-shadow); }
 .platform-preview::after { content:'';position:absolute;inset:0;border-top:1px solid var(--ice);opacity:.35;pointer-events:none; }
-.bento-card { border-radius:8px; }
+.bento { grid-auto-rows:210px; }
+.bento-card { border-radius:8px;padding-top:54px; }
 .sparkline { width:100%;bottom:95px;height:45%; }
 .sparkline path:last-child { stroke:var(--accent);stroke-dasharray:500;stroke-dashoffset:500; }
 .bento-card.motion-visible .sparkline path:last-child { animation:chart-trace 2.4s .2s var(--motion-ease) forwards; }
@@ -303,6 +304,8 @@ main.page-arriving { animation:page-blend 1s var(--motion-ease) both; }
 @keyframes chart-trace { to { stroke-dashoffset:0; } }
 @media(max-width:760px) {
  .content-page::after { top:22px; }
+ .bento { grid-auto-rows:auto; }
+ .bento-card { min-height:210px; }
  .risk-list h2 { font-size:20px; }
  .tier-card,.tier-card:hover,.tier-card.selected,.bento-card,.bento-card:hover { transform:none; }
  .bento-card.wide.tall { min-height:300px; }
